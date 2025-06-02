@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[workspace.dependencies]
+eth-ir = { version = "0.1.0", path = "crates/representation" }
+
+alloy-primitives = "1.1.2"
+evm-glue = { git = "https://github.com/Philogy/evm-glue.git", rev = "6be3e8c8" }
+

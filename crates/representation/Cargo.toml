@@ -1,0 +1,8 @@
+[package]
+name = "eth-ir"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+alloy-primitives.workspace = true

@@ -1,0 +1,10 @@
+[package]
+name = "eth-ir-backend"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+eth-ir.workspace = true
+alloy-primitives.workspace = true
+evm-glue.workspace = true
