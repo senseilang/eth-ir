@@ -1,5 +1,5 @@
 [package]
-name = "eth-ir"
+name = "eth-ir-data"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
