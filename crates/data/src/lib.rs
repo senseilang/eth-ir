@@ -11,16 +11,16 @@ use std::ops::Range;
 #[derive(Debug, Clone)]
 pub struct Program {
     pub entry: FunctionId,
-    
+
     // Top Level IR Structure
     pub functions: IndexVec<FunctionId, Function>,
     pub basic_blocks: IndexVec<BasicBlockId, BasicBlock>,
     pub operations: IndexVec<OperationIndex, Operation>,
     // Small IR Pieces
-    pub large_opcode_locals: IndexVec<LocalIndex, LocalId>,
+    pub locals: IndexVec<LocalIndex, LocalId>,
     pub data_bytes: IndexVec<DataOffset, u8>,
     pub large_consts: IndexVec<LargeConstId, U256>,
-
+    // Control Flow
     pub cases: IndexVec<CasesId, Cases>,
 }
 
