@@ -45,6 +45,8 @@ pub struct Branch {
     pub zero_target: BasicBlockId,
 }
 
+// Kept small to ensure that `Control` is no larger because of it. This is because I expect `Switch`
+// to not be that common so I don't want to optimize for it.
 #[derive(Debug, Clone)]
 pub struct Switch {
     pub condition: LocalId,
@@ -52,10 +54,16 @@ pub struct Switch {
     pub cases: CasesId,
 }
 
+#[derive(Debug, Clone)]
+pub struct Case {
+    pub value: U256,
+    pub target: BasicBlockId,
+}
+
 // TODO: Optimized memory layout.
 #[derive(Debug, Clone)]
 pub struct Cases {
-    pub cases: Vec<(U256, BasicBlockId)>,
+    pub cases: Vec<Case>,
 }
 
 #[derive(Debug, Clone)]
