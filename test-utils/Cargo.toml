@@ -1,0 +1,10 @@
+[package]
+name = "test-utils"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+chumsky = "0.10.1"
+eth-ir-data.workspace = true
+alloy-primitives.workspace = true
