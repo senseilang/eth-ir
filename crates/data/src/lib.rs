@@ -1,15 +1,14 @@
 pub mod index;
 pub mod operation;
 
-use crate::{index::*, operation::Operation};
+pub use crate::{index::*, operation::Operation};
 use alloy_primitives::U256;
-use index_vec::IndexVec;
 use std::ops::Range;
 
 /// Implemented in a data oriented way. Instead of each basic block and function holding its own
 /// vector of items they're all stored contiguously in the top level program
 #[derive(Debug, Clone)]
-pub struct Program {
+pub struct EthIRProgram {
     pub entry: FunctionId,
 
     // Top Level IR Structure
@@ -32,7 +31,8 @@ pub struct Function {
 
 #[derive(Debug, Clone)]
 pub struct BasicBlock {
-    pub inputs: Range<LocalIndex>,
+    /// Input locals are `0..input_count`.
+    pub input_count: u32,
     pub outputs: Range<LocalIndex>,
     pub operations: Range<OperationIndex>,
     pub control: Control,
@@ -69,6 +69,7 @@ pub struct Cases {
 #[derive(Debug, Clone)]
 pub enum Control {
     LastOpTerminates,
+    InternalReturn,
     ContinuesTo(BasicBlockId),
     Branches(Branch),
     Switch(Switch),

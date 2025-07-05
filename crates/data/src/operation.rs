@@ -212,8 +212,15 @@ pub enum Operation {
     LocalSetDataOffset(SetDataOffset),
 
     // ========== Internal Call ==========
-    InternalCallWithReturn(InternalCall),
-    InternalCallNoReturn(InternalCall),
+    InternalCall(InternalCall),
+    InternalReturn(OneInZeroOut),
+}
+
+impl Operation {
+    pub fn is_terminator(&self) -> bool {
+        use Operation as O;
+        matches!(self, O::Return(_) | O::Stop | O::Revert(_) | O::Invalid | O::SelfDestruct(_))
+    }
 }
 
 #[cfg(test)]
